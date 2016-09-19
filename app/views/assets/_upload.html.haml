@@ -1,0 +1,19 @@
+.row.fileupload-buttonbar
+  %span.btn.btn-primary.fileinput-button
+    %span.add_files Выберите файлы...
+    = f.file_field :data
+.clearfix
+.row
+  .col-md-12
+    %section#dropzone.call-to-action.secundary.featured.footer
+      %span или 
+      %h4 Перетащите файлы сюда
+
+    / The loading indicator is shown during image processing
+    .fileupload-loading
+    %br/
+    / The table listing the files available for upload/download
+    %table.table.table-striped
+      %tbody.files{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
+
+

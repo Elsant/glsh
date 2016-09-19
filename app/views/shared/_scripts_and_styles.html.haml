@@ -1,0 +1,40 @@
+%link{:rel=>"shortcut icon", :href => image_url("favicon.ico")}
+%meta{"http-equiv"=>"Content-Type", :content=>"text/html;charset=utf-8"}
+= stylesheet_link_tag  "application", media: "all", "data-turbolinks-track" => true
+
+= csrf_meta_tags
+%meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+
+%meta{content: "Glash", name: "keywords"}/
+%meta{content: "Glash - сайт об идеях и изобретениях, которые мы делаем реальностью. Присылайте нам свои идеи, комментируйте идеи других и зарабатывайте с нами!", name: "description"}/
+%meta{content: "glash.ru", name: "author"}/
+
+%title= (yield(:title).empty? ? "Glash - Претвори мечту в реальность!" : yield(:title))
+  
+-if @meta
+  -@meta.each do |key|
+    %meta{:name=>key[0], :content=>key[1]}
+
+- if @rss_title && @rss_url
+  = auto_discovery_link_tag(:rss, @rss_url, {:title => @rss_title})
+
+/[if IE]
+  = stylesheet_link_tag 'ie'
+/[if IE 6] 
+  = stylesheet_link_tag 'ie6'
+/[if IE 7] 
+  = stylesheet_link_tag 'ie7'
+/[if IE 8] 
+  = stylesheet_link_tag 'settings-ie8'
+
+-# if forum_page?
+  = stylesheet_link_tag 'forum'
+  - unless @feed_icons.blank?
+    - @feed_icons.each do |feed|
+      = auto_discovery_link_tag :rss, feed[:url], :title => "Subscribe to '#{feed[:title]}'"
+
+= yield :head_css
+= javascript_include_tag 'application', "data-turbolinks-track" => true
+
+
+

@@ -1,0 +1,54 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require bootstrap
+ *= require font-awesome  
+ *= require settings
+ *= require magnific-popup
+ *    jquery.isotope
+ *    owl.theme
+ *    owl.carousel
+ *   video-js
+
+ ----- Theme CSS -----
+ *= require fonts
+ *= require colors
+ *= require formtastic
+ *= require theme
+ *= require theme-elements
+ *= require theme-animate
+ *= require theme-shop
+ *= require theme-blog
+
+ ---- Skin CSS  vmesto default.css ispolzuem skin.less----
+ *= require skin
+ *= require theme-responsive
+ 
+*= require fotorama
+
+ *= require myformtastic
+ *= require custom
+ *= require contacts
+
+
+ *= require users
+ *= require jquery.Jcrop.min
+ *= require ideas
+ *= require pages
+
+ *= require jquery.fileupload-ui
+ 
+ *= require_self
+
+ 
+ */
+
+ 
+

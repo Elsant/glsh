@@ -1,0 +1,7 @@
+.col-md-4.users  
+  .col-md-5
+    =link_to image_tag(user.avatar.url(:thumb), {class: "img-thumbnail img-responsive avatar", title: "#{user.fullname}"}), user
+  .col-md-7
+    =link_to user do
+      %h4= user.fullname
+      %p.users= user.description.truncate(50) unless user.description.blank?

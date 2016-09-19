@@ -1,0 +1,17 @@
+#help_menu.nav > li > a:hover,
+#help_menu.nav > li > a:focus {
+  background-color: #e7e1f0;
+}
+
+#help_menu.nav > li > a.active
+ {
+  background-color: #8F76BB;
+  color: #FFF;
+  // background-color: #6F5499;
+}
+ul#help_menu.nav-list.primary > li a {
+  padding: 10px 20px 10px 10px;
+  &:hover{
+    padding-left: 17px;
+  }
+}

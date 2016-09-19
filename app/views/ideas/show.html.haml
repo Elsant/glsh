@@ -1,0 +1,110 @@
+-title @idea.title
+
+
+.col-md-3
+  .ideasidebar
+    %h4 Автор
+    = image_tag @idea.user.avatar.url(:medium), {class: "img-thumbnail img-responsive avatar", title: "#{@idea.user.fullname}"}
+    %br
+    %h2= link_to @idea.user.fullname, @idea.user
+    
+    %p
+      Категория:&nbsp;
+      =@idea.category.name if @idea.category.name
+    %p
+      Проголосовало за идею:&nbsp;
+      =@idea.votes_for.size
+    %p 
+      Просмотрело идею:&nbsp;
+      =@idea.views
+    - if @idea.published
+      %p 
+        Опубликована:&nbsp;
+        = l(@idea.published_at.to_date, :format => :long)
+    
+      =# time_ago_in_words(@idea.created_at.to_date)
+      =# t('time_ago', :scope => 'refinery.blog.posts.comments', :time => time_ago_in_words(comment.created_at))
+      =# l(@idea.published_at.to_date, :format => :long)
+    Статус:&nbsp;
+    -if @idea.archieved
+      В архиве
+    -elsif @idea.published && @idea.moderated
+      Активна
+    -elsif @idea.published
+      Опубликована
+    -else
+      Черновик
+
+
+
+
+      
+    =# link_to 'Проголосовать', vote_idea_path(@idea), method: :post
+    -#
+      %br
+      %h5 Categories
+      %ul.nav.nav-list.primary.push-bottom
+        %li
+          %a{:href => "#"} Design
+        %li
+          %a{:href => "#"} Photos
+        %li
+          %a{:href => "#"} Videos
+        %li
+          %a{:href => "#"} Lifestyle
+        %li
+          %a{:href => "#"} Technology
+
+    
+  
+.col-md-9
+  %h1.ideashow= @idea.title
+
+
+  %blockquote
+    = @idea.synopsis
+
+  - if @images.any?  
+    .fotorama{:"data-width" => '100%', :"data-height" => '800/450', :"data-maxwidth" => "800", :"data-maxheight" => "450", :"data-nav" => "thumbs", :"data-thumbwidth" => '100', :"data-thumbheight" => "57", :"data-allowfullscreen" => "true", :"data-fit" => "cover", :"data-transition" => "slide", :"data-clicktransition" => "crossfade", :"data-loop" => "true", :"data-keyboard" => "true"}
+      - @images.each do |image|
+        =link_to image.url(:large) do 
+          = image_tag image.url(:thumb)
+          
+    %br
+    %br
+  
+  - unless @idea.links.blank?
+    %h3.ideainfo Видео  
+    .fotorama{:"data-width" => '100%', :"data-height" => '800/450', :"data-maxwidth" => "800", :"data-maxheight" => "450", :"data-allowfullscreen" => "true", :"data-fit" => "cover"}
+      = link_to '', @idea.links
+    %br
+    %br
+  
+  .tabs
+    %ul.nav.nav-tabs
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#ideainfo"}
+          Информация
+      %li#comments_count
+        %a{"data-toggle" => "tab", :href => "#ideacomments"} Kомментарии (#{@idea.comments.size})
+    .tab-content
+      #ideainfo.tab-pane.active
+        %h3.ideainfo= t(:problem, scope: "activerecord.attributes.idea")
+        %p.pages= @idea.problem
+        %h3.ideainfo= t(:background, scope: "activerecord.attributes.idea")
+        %p.pages= @idea.background
+        %h3.ideainfo= t(:solution, scope: "activerecord.attributes.idea")
+        %p.pages= @idea.solution
+        
+      #ideacomments.tab-pane
+
+        =render "comments/tab"
+  
+  -if(user_signed_in? && !current_user.liked?(@idea))
+    = link_to 'Проголосовать за идею', vote_idea_path(@idea), method: :post, class: "input btn btn-primary"
+    &nbsp
+    &nbsp
+    &nbsp
+    = link_to "Все идеи", ideas_path, :class => "input btn backbtn"
+  -else
+    = link_to "Все идеи", ideas_path, :class => "input btn btn-primary"
