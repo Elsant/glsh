@@ -3,7 +3,7 @@ ruby '2.1.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 
-gem 'figaro', '~> 0.7.0'
+# gem 'figaro', '~> 0.7.0'
 gem 'i18n', '~> 0.6.11'
 
 gem 'haml', '~> 4.0.5'
@@ -30,7 +30,7 @@ gem 'therubyracer', '~> 0.12.1'
 group :development, :test do
   gem 'thin', '~> 1.6.2'
   gem 'capistrano', '~> 2.15.5'
-  gem 'rvm-capistrano'
+  gem  'rvm-capistrano',  require: false
   gem 'debugger'
   gem 'quiet_assets'
   gem "better_errors"
@@ -39,7 +39,7 @@ group :development, :test do
   gem 'faker'
 
   gem 'spring'
-  gem 'guard-spring'
+  # gem 'guard-spring'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
   gem 'guard-rspec'
@@ -72,7 +72,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'unicorn'
+# gem 'unicorn'
 gem 'pg'
 
 gem 'paperclip', '~> 4.2.1'
@@ -83,3 +83,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'declarative_authorization', git: "git://github.com/stffn/declarative_authorization.git"
 
 gem 'comfortable_mexican_sofa', '~> 1.12.0'
+
+gem 'dotenv-rails'
+
+gem 'passenger', '>= 5.0.25', require: 'phusion_passenger/rack_handler'

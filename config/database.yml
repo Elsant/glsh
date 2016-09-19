@@ -6,11 +6,11 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: gdev
+  database: glash_development
   host: localhost
   pool: 5
-  username: postgres
-  password: postgres
+  username: pg
+  password: pg
   min_messages: warning
 test: &test
   adapter: postgresql
@@ -29,8 +29,8 @@ production:
   database: glash_production
   host: localhost
   pool: 5
-  username: postgres
-  password: postgres
+  username: <%= ENV['PROD_DATABASE_USERNAME'] %>
+  password: <%= ENV['PROD_DATABASE_PASSWORD'] %>
   min_messages: warning
 
 cucumber:
