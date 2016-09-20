@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.3.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 
@@ -31,7 +31,7 @@ group :development, :test do
   gem 'thin', '~> 1.6.2'
   gem 'capistrano', '~> 2.15.5'
   gem  'rvm-capistrano',  require: false
-  gem 'debugger'
+  # gem 'debugger'
   gem 'quiet_assets'
   gem "better_errors"
   gem "binding_of_caller"
@@ -81,7 +81,7 @@ gem 'paperclip', '~> 4.2.1'
 gem 'kaminari', '~> 0.16.1'
 gem 'wicked', '~> 1.1.0'
 gem 'acts_as_votable', '~> 0.10.0'
-gem 'declarative_authorization', git: "git://github.com/stffn/declarative_authorization.git"
+gem 'declarative_authorization', :git => 'https://github.com/stffn/declarative_authorization.git'
 
 gem 'comfortable_mexican_sofa', '~> 1.12.0'
 
