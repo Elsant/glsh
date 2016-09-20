@@ -62,7 +62,8 @@ end
 gem 'devise', '~> 3.4.1'
 gem 'devise-i18n', '~> 0.10.3'
 
-gem 'activeadmin', github: 'activeadmin'
+# gem 'activeadmin' , github: 'activeadmin'
+gem 'activeadmin', '~> 1.0.0.pre1'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
