@@ -87,3 +87,4 @@ gem 'comfortable_mexican_sofa', '~> 1.12.0'
 gem 'dotenv-rails'
 
 gem 'passenger', '>= 5.0.25', require: 'phusion_passenger/rack_handler'
+gem 'mailgun_rails'

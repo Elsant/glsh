@@ -52,17 +52,19 @@ Glash::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   #config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  config.action_mailer.default_url_options = { :host => ENV['SITE_NAME'] }
 
 
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
 
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default :charset => "utf-8"
+  # config.action_mailer.default_url_options = { :host => ENV['SITE_NAME'] }
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = false
+
+  # config.action_mailer.default :charset => "utf-8"
+  # config.action_mailer.delivery_method = :smtp
+  
   # config.action_mailer.smtp_settings = {
   #   :address => "smtp.gmail.com",
   #   :port => 587,
@@ -75,13 +77,23 @@ Glash::Application.configure do
 
 
   # For Mandrill
-  config.action_mailer.smtp_settings = {
-    :address   => "smtp.mandrillapp.com",
-    :port      => 587,
-    :user_name => ENV["MANDRILL_USERNAME"],
-    :password  => ENV["MANDRILL_API_KEY"]
-  }
+  # config.action_mailer.smtp_settings = {
+  #   :address   => "smtp.mandrillapp.com",
+  #   :port      => 587,
+  #   :user_name => ENV["MANDRILL_USERNAME"],
+  #   :password  => ENV["MANDRILL_API_KEY"]
+  # }
   
+
+  config.action_mailer.default_url_options = { :host => ENV['SITE_NAME'] }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV["MAILGUN_API_KEY"],
+    domain:  ENV["MAILGUN_DOMAIN"]
+  }
 
 
 
